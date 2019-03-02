@@ -1,0 +1,23 @@
+version: "3"
+services:
+  web:
+    build: .
+    depends_on:
+      - database
+    env_file:
+      - .env/development/database
+      - .env/development/web
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/core_connection
+      - gem_cache:/gems
+  database:
+    image: postgres:alpine
+    env_file:
+      - .env/development/database
+    volumes:
+      - db_data:/var/lib/postgresql/data
+volumes:
+  db_data:
+  gem_cache:

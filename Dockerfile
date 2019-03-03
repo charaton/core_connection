@@ -21,7 +21,6 @@ RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
 
 WORKDIR /usr/src/core_connection
 COPY Gemfile Gemfile.lock /usr/src/core_connection/
-ENV BUNDLE_PATH /gems
 
 RUN bundle install
 

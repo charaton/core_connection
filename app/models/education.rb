@@ -1,4 +1,4 @@
-class Education < ActiveRecord::Base
+class Education < ApplicationRecord
   before_validation :smart_add_url_protocol
   belongs_to :profile
 

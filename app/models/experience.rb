@@ -1,4 +1,4 @@
-class Experience < ActiveRecord::Base
+class Experience < ApplicationRecord
   before_validation :smart_add_url_protocol
   belongs_to :profile
 

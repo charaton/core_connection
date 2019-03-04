@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2', '>= 4.2.11'
+gem 'rails', '5.0.7.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
@@ -41,9 +41,7 @@ gem 'mini_magick'
 gem 'simple_form'
 gem 'jquery-ui-rails'
 gem 'validate_url'
-gem 'quiet_assets'
 gem 'best_in_place', '~> 3.0.1'
-gem "fog"
 gem "fog-aws"
 
 # Use Unicorn as the app server

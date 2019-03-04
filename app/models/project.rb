@@ -1,4 +1,4 @@
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
   before_validation :smart_add_project_url_protocol, :smart_add_github_url_protocol
   belongs_to :profile
 

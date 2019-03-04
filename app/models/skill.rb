@@ -1,4 +1,4 @@
-class Skill < ActiveRecord::Base
+class Skill < ApplicationRecord
   belongs_to :category
   has_many :skillsets, dependent: :nullify
   has_many :profiles, through: :skillsets

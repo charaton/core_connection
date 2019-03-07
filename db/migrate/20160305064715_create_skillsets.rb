@@ -1,4 +1,4 @@
-class CreateSkillsets < ActiveRecord::Migration
+class CreateSkillsets < ActiveRecord::Migration[4.2]
   def change
     create_table :skillsets do |t|
       t.references :profile, index: true, foreign_key: true

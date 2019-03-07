@@ -11,7 +11,6 @@ services:
       - "3000:3000"
     volumes:
       - .:/usr/src/core_connection
-      - gem_cache:/usr/local/bundle
   database:
     image: postgres:alpine
     env_file:
@@ -20,4 +19,3 @@ services:
       - db_data:/var/lib/postgresql/data
 volumes:
   db_data:
-  gem_cache:

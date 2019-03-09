@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2', '>= 5.2.2'
+gem 'rails', '~> 6.0.0.beta2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
@@ -32,7 +32,7 @@ gem 'bootstrap-kaminari-views'
 gem 'bootstrap-sass'
 gem 'cancancan'
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
-gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.3'
+gem 'delayed_job_active_record', '~> 4.1.4.beta1'
 gem 'delayed_job_web'
 gem 'font-awesome-rails'
 gem 'jquery-ui-rails'

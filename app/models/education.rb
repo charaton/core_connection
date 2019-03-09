@@ -1,6 +1,7 @@
 class Education < ApplicationRecord
-  before_validation :smart_add_url_protocol
   belongs_to :profile
+
+  before_validation :smart_add_url_protocol
 
   validates :school, presence: true
   validates :degree, presence: true
@@ -16,5 +17,4 @@ class Education < ApplicationRecord
       end
     end
   end
-
 end

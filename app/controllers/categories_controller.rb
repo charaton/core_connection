@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  # We will need to implement it when we decide to make an admin paged
   before_action :find_category, only: [:show, :update, :edit, :destroy]
 
   def new
@@ -7,11 +6,9 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    # category_name = params["category"]["name"]
-    @category = Category.new category_params
+    @category = Category.new(category_params)
     if @category.save
-      flash[:notice] = "Category Saved Successfully"
-      redirect_to categories_path
+      redirect_to categories_path, notice: "Category Saved Successfully"
     else
       flash[:alert] = "Category could not be saved"
       render :new
@@ -19,23 +16,24 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.order("created_at DESC")
+    @categories = Category.order(created_at: :desc)
     @category = Category.new
   end
 
   def edit
-
   end
 
   def update
     respond_to do |format|
-      if @category.update category_params
-        format.html{redirect_to category_path(@category), notice: "Category updated Successfully"}
-        format.json {respond_with_bip(@category)}
+      if @category.update(category_params)
+        format.html { redirect_to category_path(@category), notice: "Category updated Successfully" }
+        format.json { respond_with_bip(@category) }
       else
-        # flash[:alert] = "Category could not be Updated"
-        format.json {respond_with_bip(@category)}
-        format.html{render :edit}
+        format.html do
+          flash[:alert] = "Category could not be Updated"
+          render :edit
+        end
+        format.json { respond_with_bip(@category) }
       end
     end
   end
@@ -48,7 +46,7 @@ class CategoriesController < ApplicationController
   private
 
   def find_category
-    @category = Category.find params[:id]
+    @category = Category.find(params[:id])
   end
 
   def category_params

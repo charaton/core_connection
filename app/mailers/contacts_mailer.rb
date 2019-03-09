@@ -3,6 +3,6 @@ class ContactsMailer < ApplicationMailer
     @user = user
     @name = name
     @message = message
-    mail(to: @user.email, subject: "#{@user.full_name} : New message from #{name}")
+    mail to: @user.email, subject: "#{@user.full_name} : New message from #{name}"
   end
 end

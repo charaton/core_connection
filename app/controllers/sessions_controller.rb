@@ -3,14 +3,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email params[:email]
-    if user && user.authenticate(params[:password])
+    user = User.find_by(email: params[:email])
+    if user&.authenticate(params[:password])
       sign_in(user)
-      # if the user is an admin redirect to the user show page
-      if user.admin?
+      if user.admin? # if the user is an admin redirect to the user show page
         redirect_to users_path, notice: "Welcome back mighty admin!"
-      # else they are just a regular use and redirect to the normal homepage
-      else
+      else # they are just a regular use and redirect to the normal homepage
         redirect_to profile_path(current_user_profile), notice: "Sign in successful!"
       end
     else

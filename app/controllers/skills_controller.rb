@@ -9,7 +9,7 @@ class SkillsController < ApplicationController
   end
 
   def create
-    @skill = Skill.new skill_params
+    @skill = Skill.new(skill_params)
     @profile = current_user_profile
     if @skill.save
       @proficiency=params["skillset"]["proficiency"].to_i
@@ -27,7 +27,7 @@ class SkillsController < ApplicationController
   end
 
   def update
-    if @skill.update skill_params
+    if @skill.update(skill_params)
       @skill.skillsets.first.update("proficiency"=>params["skillset"]["proficiency"])
       redirect_to profile_path(@profile), notice: "Skill has been updated!"
     else
@@ -44,16 +44,16 @@ class SkillsController < ApplicationController
   private
 
   def find_skill
-    @skill = Skill.find params[:id]
+    @skill = Skill.find(params[:id])
   end
 
   def skill_params
     # skill_params = params.require(:skill).permit([:name, :category_id, skillsets_attributes:[:id, :proficiency]])
-    params.require(:skill).permit(:name, :category_id, :skillsets_attributes => ["proficiency"])
+    params.require(:skill).permit(:name, :category_id, skillsets_attributes: [:proficiency])
   end
 
   def user_from_request
-    Profile.find_by_id(params[:profile_id]).user
+    Profile.find_by(id: params[:profile_id])&.user
   end
 
   def authorize_user

@@ -1,12 +1,11 @@
 class ExperiencesController < ApplicationController
-
   before_action :find_experience, only: [:edit, :update, :destroy]
   before_action :find_profile, only: [:edit, :update, :destroy]
   before_action :authenticate_user
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def create
-    @experience = Experience.new experience_params
+    @experience = Experience.new(experience_params)
     @experience.profile = current_user_profile
     # this stores an instance variable of profile just in case it needs to
     # be passed through when rendering the new page on error
@@ -23,7 +22,7 @@ class ExperiencesController < ApplicationController
   end
 
   def update
-    if @experience.update experience_params
+    if @experience.update(experience_params)
       redirect_to profile_path(current_user_profile), notice: "Work experience updated!"
     else
       flash[:alert] = "Error updating experience!"
@@ -39,7 +38,7 @@ class ExperiencesController < ApplicationController
   private
 
   def find_experience
-    @experience = Experience.find params[:id]
+    @experience = Experience.find(params[:id])
   end
 
   def experience_params

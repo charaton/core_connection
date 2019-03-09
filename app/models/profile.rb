@@ -1,5 +1,4 @@
 class Profile < ApplicationRecord
-  before_validation :smart_add_twitter_url_protocol, :smart_add_github_url_protocol, :smart_add_linkedin_url_protocol
   belongs_to :user
 
   # associations for skillset
@@ -15,6 +14,7 @@ class Profile < ApplicationRecord
   # associations for education
   has_many :educations, dependent: :destroy
 
+  before_validation :smart_add_twitter_url_protocol, :smart_add_github_url_protocol, :smart_add_linkedin_url_protocol
 
   # MODEL VALIDATIONS
   # limit max to 140 characters for tag_line
@@ -32,15 +32,9 @@ class Profile < ApplicationRecord
   mount_uploader :resume, ResumeUploader
   mount_uploader :photo, ProfilePhotoUploader
 
-  def user_full_name
-    user.full_name
-  end
+  delegate :full_name, to: :user, prefix: true, allow_nil: true
 
-  def approved
-    Profile.all.each do |profile|
-      profile if profile.user.status
-    end
-  end
+  scope :approved, -> { joins(:user).where(users: { status: true }) }
 
   protected
 

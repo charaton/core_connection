@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  before_action :set_user, except: [:index, :new, :create]
 
   def index
-    @pending_users = User.where(status: false, admin: false)
-    @approved_users = User.where(status: true, admin: false)
+    @pending_users = User.pending
+    @approved_users = User.approved
   end
 
   def new
@@ -10,9 +11,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new user_params
+    @user = User.new(user_params)
     if @user.save
-      sign_in(@user)
+      sign_in @user
       redirect_to new_profile_path, notice: "User created"
     else
       render :new
@@ -20,17 +21,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find params[:id]
   end
 
   def edit
-    @user = User.find params[:id]
   end
 
   def update
-    @user = User.find params[:id]
-    if @user.update user_params
-      if current_user.admin
+    if @user.update(user_params)
+      if current_user.admin?
         UsersApprovalMailer.send_approval(@user).deliver_later
         redirect_to users_path, notice: "User approved"
       else
@@ -44,28 +42,27 @@ class UsersController < ApplicationController
 
 
   def destroy
-    @user = User.find params[:id]
-    dependent_profile = Profile.find_by_user_id(@user)
-    dependent_profile.destroy
     @user.destroy
     redirect_to users_path, notice: "User deleted successfully!"
   end
 
   def edit_password
-    @user = User.find params[:id]
   end
 
   def update_password
-  @user = User.find params[:id]
-  if @user.authenticate(user_params[:current_password]) && @user.update(edit_password_params)
-    redirect_to root_path, notice: "You have changed your password"
-  else
-    flash.now[:alert] = "make sure password is correct"
-    render :edit_password
+    if @user.authenticate(user_params[:current_password]) && @user.update(edit_password_params)
+      redirect_to root_path, notice: "You have changed your password"
+    else
+      flash.now[:alert] = "make sure password is correct"
+      render :edit_password
+    end
   end
-end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, :status, :admin, :current_password)
@@ -74,6 +71,4 @@ end
   def edit_password_params
     params.require(:user).permit([:current_password, :password, :password_confirmation])
   end
-
-
 end

@@ -1,12 +1,11 @@
 class EducationsController < ApplicationController
-
   before_action :find_education, only: [:edit, :update, :destroy]
   before_action :find_profile, only: [:edit, :update, :destroy]
   before_action :authenticate_user
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def create
-    @education = Education.new education_params
+    @education = Education.new(education_params)
     @education.profile = current_user_profile
     # this stores an instance variable of profile just in case it needs to
     # be passed through when rendering the new page on error
@@ -40,7 +39,7 @@ class EducationsController < ApplicationController
   private
 
   def find_education
-    @education = Education.find params[:id]
+    @education = Education.find(params[:id])
   end
 
   def education_params

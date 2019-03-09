@@ -14,6 +14,9 @@ class User < ApplicationRecord
   validates :password, presence: true, if: :changing_password?
   validates :password_confirmation, presence: true, if: :changing_password?
 
+  scope :pending, -> { where status: false, admin: false }
+  scope :approved, -> { where status: true, admin: false }
+
   def full_name
     "#{first_name} #{last_name}".titleize
   end
@@ -33,8 +36,7 @@ class User < ApplicationRecord
 
   private
 
- def changing_password?
-   current_password.present?
- end
-
+  def changing_password?
+    current_password.present?
+  end
 end

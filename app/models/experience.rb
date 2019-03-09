@@ -1,6 +1,7 @@
 class Experience < ApplicationRecord
-  before_validation :smart_add_url_protocol
   belongs_to :profile
+
+  before_validation :smart_add_url_protocol
 
   validates :job_title, presence: true
   validates :company_name, presence: true

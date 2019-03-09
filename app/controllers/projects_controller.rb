@@ -1,17 +1,14 @@
 class ProjectsController < ApplicationController
-
   before_action :find_project, only: [:edit, :update, :destroy]
   before_action :find_profile, only: [:edit, :update, :destroy]
   before_action :authenticate_user
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
-
   def create
-    @project = Project.new project_params
-    @project.profile = current_user_profile
+    @project = current_user_profile.projects.new(project_params)
     if @project.save
       redirect_to edit_profile_path(current_user_profile), notice: "Project added."
-      else
+    else
       render :new
     end
   end
@@ -20,7 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    if @project.update project_params
+    if @project.update(project_params)
       redirect_to profile_path(@profile), notice: "Project updated"
     else
       render :edit
@@ -35,7 +32,7 @@ class ProjectsController < ApplicationController
   private
 
   def find_project
-    @project = Project.find params[:id]
+    @project = Project.find(params[:id])
   end
 
   def project_params

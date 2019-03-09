@@ -24,9 +24,9 @@ class Profile < ApplicationRecord
   validates_inclusion_of :availability, in: [true, false]
 
   # Social media link validations
-  validates :twitter_url, uniqueness: true, allow_blank: true, :url => {:allow_blank => true}
-  validates :linkedin_url, uniqueness: true, allow_blank: true, :url => {:allow_blank => true}
-  validates :github_url, uniqueness: true, allow_blank: true, :url => {:allow_blank => true}
+  validates :twitter_url, uniqueness: true, allow_blank: true
+  validates :linkedin_url, uniqueness: true, allow_blank: true
+  validates :github_url, uniqueness: true, allow_blank: true
 
   # Resume & Photo uploaders
   mount_uploader :resume, ResumeUploader

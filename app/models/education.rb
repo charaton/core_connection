@@ -4,10 +4,8 @@ class Education < ApplicationRecord
 
   validates :school, presence: true
   validates :degree, presence: true
-  validates :school_url, :url => {:allow_blank => true}
 
   mount_uploader :image, EducationImageUploader
-
 
   protected
 

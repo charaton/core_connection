@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'bootsnap', require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2', '>= 5.2.2'
@@ -22,27 +21,25 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '~> 1.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'cancancan'
+
+gem 'best_in_place', '~> 3.0.1'
+gem 'bootsnap', require: false
+gem 'bootstrap-kaminari-views'
 gem 'bootstrap-sass'
-gem 'awesome_print'
-gem 'interactive_editor'
-gem 'hirb'
+gem 'cancancan'
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
-gem 'faker'
-gem 'font-awesome-rails'
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.3'
 gem 'delayed_job_web'
-gem 'kaminari'
-gem 'bootstrap-kaminari-views'
-gem 'mini_magick'
-gem 'simple_form'
+gem 'font-awesome-rails'
 gem 'jquery-ui-rails'
-gem 'validate_url'
-gem 'best_in_place', '~> 3.0.1'
+gem 'kaminari'
+gem 'mini_magick'
+gem 'puma', '~> 3.12'
+gem 'simple_form'
 gem "fog-aws"
 
 # Use Unicorn as the app server
@@ -54,6 +51,8 @@ gem "fog-aws"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'faker'
+
 end
 
 group :development do
@@ -64,5 +63,3 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-gem "public_suffix", "~> 3.0"

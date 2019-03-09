@@ -6,10 +6,6 @@ class Project < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true, uniqueness:true
 
-  #simple validation to ensure that the URL is valid
-  validates :project_url, :url => {:allow_blank => true}
-  validates :github_url, :url => {:allow_blank => true}
-
   protected
 
   def smart_add_project_url_protocol

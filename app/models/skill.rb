@@ -8,6 +8,8 @@ class Skill < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :best_first, -> { order proficiency: :desc }
+
   def proficiency(profile)
     Skillset.where(skill_id: id, profile_id: profile.id)[0].proficiency
   end

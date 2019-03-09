@@ -1,7 +1,7 @@
 <div class="col-sm-12" id="profile-skills">
   <%= render partial: "skills/skill",
              collection: @profile.skills.best_first,
-             spacer_template: "skills/skill_spacer",
+             spacer_template: "profile_list_spacer",
              locals: { profile: @profile }
   %>
 </div>

@@ -13,14 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require best_in_place
-//= require jquery-ui
+//= require jquery-ui/widgets/progressbar
+//= require jquery-ui/widgets/tabs
 //= require best_in_place.jquery-ui
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function(){
-
-  jQuery(".best_in_place").best_in_place();
-
-});

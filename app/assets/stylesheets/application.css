@@ -12,7 +12,9 @@
  *
  *= require_tree .
  *= require font-awesome
- *= require jquery-ui
+ *= require jquery-ui/core
+ *= require jquery-ui/progressbar
+ *= require jquery-ui/theme
+ *= require jquery-ui/tabs
  *= require_self
  */
- 

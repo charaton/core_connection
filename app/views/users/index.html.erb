@@ -6,11 +6,11 @@
     <% @pending_users.each do |user| %>
       <div id="<%= dom_id(user) %>" class="row">
         <div class="col-sm-6">
-          <p><%= user.full_name %><br><%= user.email %></p>
+          <p><%= full_name user %><br><%= user.email %></p>
         </div>
         <div class="col-sm-6 text-right">
           <%= link_to "Approve", user_path(id: user, user: {status: true}), method: :patch, class: "btn btn-success"  %>
-          <%= link_to "Delete", user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete #{user.full_name}?"}, class: "btn btn-primary" %>
+          <%= link_to "Delete", user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete #{full_name user}?"}, class: "btn btn-primary" %>
         </div>
       </div>
       <hr>
@@ -24,10 +24,10 @@
     <% @approved_users.each do |user| %>
       <div id="<%= dom_id(user) %>" class="row">
         <div class="col-sm-6">
-          <p><%= user.full_name %><br><%= user.email %></p>
+          <p><%= full_name user %><br><%= user.email %></p>
         </div>
         <div class="col-sm-6 text-right">
-          <%= link_to "Delete", user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete #{user.full_name}?"}, class: "btn btn-primary" %>
+          <%= link_to "Delete", user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete #{full_name user}?"}, class: "btn btn-primary" %>
         </div>
       </div>
       <hr>

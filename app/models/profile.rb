@@ -32,8 +32,6 @@ class Profile < ApplicationRecord
   mount_uploader :resume, ResumeUploader
   mount_uploader :photo, ProfilePhotoUploader
 
-  delegate :full_name, to: :user, prefix: true, allow_nil: true
-
   scope :approved, -> { joins(:user).where(users: { status: true }) }
 
   protected

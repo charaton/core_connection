@@ -17,10 +17,6 @@ class User < ApplicationRecord
   scope :pending, -> { where status: false, admin: false }
   scope :approved, -> { where status: true, admin: false }
 
-  def full_name
-    "#{first_name} #{last_name}".titleize
-  end
-
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now

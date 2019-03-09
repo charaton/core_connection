@@ -1,5 +1,5 @@
 <div class="col-sm-4 col-sm-offset-4">
-  <h1> Contact <%=Profile.find(@profile).user.full_name%></h1>
+  <h1> Contact <%=full_name Profile.find(@profile).user%></h1>
 
   <%= form_tag('/contacts', class: 'form') do %>
     <%= hidden_field_tag :profile_id, @profile%>

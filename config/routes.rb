@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :contacts, only: [:new, :create, :show]
   resources :categories
 
   resources :profiles do
@@ -18,12 +17,10 @@ Rails.application.routes.draw do
     resources :skills
     resources :educations
     resources :experiences
-    resources :contacts, only: [:new, :create, :show]
+    resources :contacts, only: [:new, :create]
   end
 
   resources :password_resets
-
-  resources :contacts, only: [:new, :create]
 
   get "users/:id/edit_password" => "users#edit_password", as: :edit_password
   patch "users/:id/update_password" => "users#update_password"

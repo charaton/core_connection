@@ -1,22 +1,26 @@
 <div class="col-sm-4 col-sm-offset-4">
-  <h1> Contact <%=full_name Profile.find(@profile).user%></h1>
+  <h1>
+    Contact <%= full_name @profile.user %>
+  </h1>
 
-  <%= form_tag('/contacts', class: 'form') do %>
-    <%= hidden_field_tag :profile_id, @profile%>
+  <%= form_with url: profile_contacts_path(@profile), local: true, class: "form" do |form| %>
     <div class="form-group">
-      <%= label_tag :name, "Name", class: "control-label" %>
-      <%= text_field_tag :name, "", class: "form-control" %>
+    <%= form.label :name, "Name", class: "control-label" %>
+    <%= form.text_field :name, class: "form-control" %>
     </div>
+
     <div class="form-group">
-      <%= label_tag :email, "Email", class: "control-label" %>
-      <%= email_field_tag :email," ", class: "form-control" %>
+      <%= form.label :email, "Email", class: "control-label" %>
+      <%= form.email_field :email, class: "form-control" %>
     </div>
+
     <div class="form-group">
-      <%= label_tag :message, "Message", class: "control-label" %>
-      <%= text_area_tag :message, "", rows: 6, class: "form-control" %>
+      <%= form.label :message, "Message", class: "control-label" %>
+      <%= form.text_area :message, rows: 6, class: "form-control" %>
     </div>
+
     <div class="form-group">
-      <%= submit_tag "Submit", class: "btn btn-primary" %>
+      <%= form.submit "Submit", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

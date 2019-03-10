@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   resources :categories
 
   resources :profiles do
-    resources :projects
-    resources :skills
-    resources :educations
-    resources :experiences
+    resources :projects, except: :index
+    resources :skills, except: :index
+    resources :educations, except: :index
+    resources :experiences, except: :index
     resources :contacts, only: [:new, :create]
   end
 

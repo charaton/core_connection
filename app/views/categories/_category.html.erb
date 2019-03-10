@@ -6,19 +6,21 @@
                         type: :input,
                         ok_button: "Save",
                         cancel_button: "Cancel",
-                        activator: "#activator-#{category.id}"
-      %>
+                        activator: "#activator-#{category.id}" %>
     </p>
   </div>
 
   <div class="col-sm-6 text-right">
-    <%= button_tag "Edit", id: "activator-#{category.id}", class: "btn btn-primary" %>
+    <%= button_tag "Edit",
+                   id: "activator-#{category.id}",
+                   class: "btn btn-primary" %>
     <%= link_to "Delete",
                 category_path(category),
                 method: :delete,
-                data: { confirm: "Are you sure you want to delete this category?" },
+                data: {
+                  confirm: "Are you sure you want to delete this category?"
+                },
                 class: "btn btn-primary",
-                role: "button"
-    %>
+                role: "button" %>
   </div>
 </div>

@@ -1,15 +1,13 @@
 class EducationsController < ApplicationController
   before_action :find_education, only: [:edit, :update, :destroy]
-  before_action :find_profile, only: [:edit, :update, :destroy]
+  before_action :find_profile, only: [:edit, :update, :create, :destroy]
   before_action :authenticate_user
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def create
-    @education = Education.new(education_params)
-    @education.profile = current_user_profile
+    @education = @profile.educations.new(education_params)
     # this stores an instance variable of profile just in case it needs to
     # be passed through when rendering the new page on error
-    @profile = current_user_profile
     if @education.save
       redirect_to edit_profile_path(current_user_profile), notice: "Education added!"
     else

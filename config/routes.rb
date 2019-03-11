@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :categories
 
   resources :profiles do
+    get "/available", on: :collection, action: :index, defaults: { available: true }
     resources :projects, except: :index
     resources :skills, except: :index
     resources :educations, except: :index

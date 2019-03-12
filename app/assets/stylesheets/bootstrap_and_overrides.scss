@@ -1,8 +1,6 @@
 $brand-primary: #CB0D0F;
 $primary-color: #CB0D0F;
 $brand-dark: darken(#CB0D0F, 6.5%);
-@import "bootstrap-sprockets";
-@import "bootstrap";
 
 html {
   position: relative;
@@ -48,10 +46,6 @@ body {
 
 span.dropdown-toggle {
   padding: 10px;
-}
-
-.user-icon{
-  border-radius: 50px;
 }
 
 .nav{

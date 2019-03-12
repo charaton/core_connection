@@ -1,4 +1,5 @@
 FROM ruby:2.6
+
 LABEL maintainer="charaton@icloud.com"
 
 # Allow apt to work with https-based sources
@@ -19,6 +20,9 @@ RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
   yarn \
   && rm -rf /var/lib/apt/lists/*
 
+RUN useradd -m deploy
+USER deploy
+
 WORKDIR /usr/src/core_connection
 COPY Gemfile Gemfile.lock /usr/src/core_connection/
 
@@ -27,4 +31,5 @@ RUN bundle install
 COPY . /usr/src/core_connection/
 
 ENTRYPOINT [ "./docker-entrypoint.sh" ]
-CMD [ "bin/rails", "server", "--binding=0.0.0.0" ]
+
+CMD bundle exec puma -C config/puma.rb

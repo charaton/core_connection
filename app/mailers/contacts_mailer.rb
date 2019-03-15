@@ -1,5 +1,6 @@
 class ContactsMailer < ApplicationMailer
-  helper :users
+  include UsersHelper
+  add_template_helper UsersHelper
 
   def notify_student(user, email, name, message)
     @user = user

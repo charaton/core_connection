@@ -4,11 +4,21 @@ services:
     build: .
     depends_on:
       - database
+      - redis
     env_file:
-      - .env/development/database
       - .env/development/web
     ports:
       - "3000:3000"
+    volumes:
+      - .:/usr/src/core_connection
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    depends_on:
+      - database
+      - redis
+    env_file:
+      - .env/development/web
     volumes:
       - .:/usr/src/core_connection
   database:
@@ -17,5 +27,7 @@ services:
       - .env/development/database
     volumes:
       - db_data:/var/lib/postgresql/data
+  redis:
+    image: redis:alpine
 volumes:
   db_data:

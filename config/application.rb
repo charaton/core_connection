@@ -17,7 +17,7 @@ module CoreConnection
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.active_job.queue_adapter = :delayed_job
+    config.active_job.queue_adapter = :sidekiq
     config.serve_static_files = true
   end
 end

@@ -20,10 +20,7 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  username: <%= ENV["POSTGRES_USER"] %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
-  database: <%= ENV["POSTGRES_DB"] %>
-  host: <%= ENV["DATABASE_HOST"] %>
+  url: <%= URI.encode ENV['DATABASE_URL'] %>
 
 development:
   <<: *default
@@ -84,6 +81,3 @@ test:
 #
 production:
   <<: *default
-  database: core_connection_production
-  username: core_connection
-  password: <%= ENV['CORE_CONNECTION_DATABASE_PASSWORD'] %>

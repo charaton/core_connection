@@ -1,14 +1,14 @@
 class Experience < ApplicationRecord
   belongs_to :profile
 
+  has_one_attached :image
+
   before_validation :smart_add_url_protocol
 
   validates :job_title, presence: true
   validates :company_name, presence: true
   validates :from_date, presence: true
   validates :to_date, presence: true
-
-  mount_uploader :image, ExperienceImageUploader
 
   protected
 

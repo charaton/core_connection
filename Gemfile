@@ -26,20 +26,19 @@ gem 'sdoc', '~> 1.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'aws-sdk-s3', '~> 1.32'
 gem 'best_in_place', '~> 3.0.1'
 gem 'bootsnap', require: false
 gem 'bootstrap-kaminari-views'
 gem 'bootstrap-sass'
 gem 'cancancan'
-gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'font-awesome-rails'
+gem 'image_processing', '~> 1.8'
 gem 'jquery-ui-rails'
 gem 'kaminari'
-gem 'mini_magick'
 gem 'puma', '~> 3.12'
 gem 'sidekiq', '~> 5.2', '>= 5.2.5'
 gem 'simple_form'
-gem "fog-aws"
 
 # Use Unicorn as the app server
 # gem 'unicorn'

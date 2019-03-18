@@ -37,8 +37,8 @@
               <li>
                 <div class="dropdown">
                   <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <% if user_signed_in? && current_user_profile && current_user_profile.photo %>
-                    <%= image_tag current_user_profile.photo.url(:menu_icon), class: "img-circle"%>
+                    <% if current_user&.profile&.photo.attached? %>
+                    <%= image_tag current_user_profile.photo.variant(resize_to_limit: [25, 25]), class: "img-circle" %>
                     <% else %>
                     Account
                     <% end %>

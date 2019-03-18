@@ -1,12 +1,12 @@
 class Education < ApplicationRecord
   belongs_to :profile
 
+  has_one_attached :image
+
   before_validation :smart_add_url_protocol
 
   validates :school, presence: true
   validates :degree, presence: true
-
-  mount_uploader :image, EducationImageUploader
 
   protected
 

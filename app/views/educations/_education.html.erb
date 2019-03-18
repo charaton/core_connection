@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-sm-9">
-    <% if education.image %>
+    <% if education.image.attached? %>
       <div class="logo-thumb">
-        <%= image_tag education.image.url(:logo_thumb) %>
+        <%= image_tag education.image.variant(resize_to_limit: [150, 150]) %>
       </div>
     <% end %>
 

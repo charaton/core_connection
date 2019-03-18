@@ -14,6 +14,9 @@ class Profile < ApplicationRecord
   # associations for education
   has_many :educations, dependent: :destroy
 
+  has_one_attached :resume
+  has_one_attached :photo
+
   before_validation :smart_add_twitter_url_protocol, :smart_add_github_url_protocol, :smart_add_linkedin_url_protocol
 
   # MODEL VALIDATIONS
@@ -27,10 +30,6 @@ class Profile < ApplicationRecord
   validates :twitter_url, uniqueness: true, allow_blank: true
   validates :linkedin_url, uniqueness: true, allow_blank: true
   validates :github_url, uniqueness: true, allow_blank: true
-
-  # Resume & Photo uploaders
-  mount_uploader :resume, ResumeUploader
-  mount_uploader :photo, ProfilePhotoUploader
 
   scope :approved, -> { joins(:user).where(users: { status: true }) }
 

@@ -28,7 +28,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'aws-sdk-s3', '~> 1.32'
 gem 'best_in_place', '~> 3.0.1'
-gem 'bootsnap', require: false
+
+# NOTE: https://github.com/Shopify/bootsnap/issues/77
+# gem 'bootsnap', require: false
+
 gem 'bootstrap-kaminari-views'
 gem 'bootstrap-sass'
 gem 'cancancan'

@@ -30,4 +30,6 @@ USER deploy
 
 COPY . /usr/src/core_connection/
 
+RUN yarn install
+
 # CMD bundle exec rails server -b 0.0.0.0 -p $PORT

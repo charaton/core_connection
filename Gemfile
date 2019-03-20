@@ -42,6 +42,7 @@ gem 'kaminari'
 gem 'puma', '~> 3.12'
 gem 'sidekiq', '~> 5.2', '>= 5.2.5'
 gem 'simple_form'
+gem 'webpacker', '~> 4.0', '>= 4.0.2'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -80,3 +80,10 @@ config/initializers/app_keys.rb
 
 # Ignore temporary Profile, Education, Experience photos and resumes
 public/uploads/*
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

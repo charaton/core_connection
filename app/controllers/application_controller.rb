@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_profile
-    current_user.profile
+    current_user&.profile
   end
 
   def authenticate_user

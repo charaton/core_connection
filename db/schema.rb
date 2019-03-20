@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_20_203836) do
+ActiveRecord::Schema.define(version: 2019_03_20_204152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,12 +70,12 @@ ActiveRecord::Schema.define(version: 2019_03_20_203836) do
   create_table "educations", id: :serial, force: :cascade do |t|
     t.string "school"
     t.string "image"
-    t.text "description"
     t.string "school_url"
     t.string "degree"
     t.integer "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["profile_id"], name: "index_educations_on_profile_id"
   end
 
@@ -95,7 +95,6 @@ ActiveRecord::Schema.define(version: 2019_03_20_203836) do
 
   create_table "profiles", id: :serial, force: :cascade do |t|
     t.string "tagline"
-    t.text "description"
     t.boolean "availability", default: false
     t.string "resume"
     t.string "photo"

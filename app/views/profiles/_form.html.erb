@@ -1,6 +1,7 @@
 <%= simple_form_for @profile do |f| %>
   <%= f.input :tagline, label: "Headline" %>
-  <%= f.input :description %>
+  <%= f.label :description %>
+  <%= f.rich_text_area :description, class: 'form-control' %>
   <%= f.input :availability %>
   <%= f.input :linkedin_url, label: fa_icon("linkedin"), label_html: {class: "form-link-icon"} %>
   <%= f.input :twitter_url, label: fa_icon("twitter"), label_html: {class: "form-link-icon"} %>

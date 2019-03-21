@@ -23,9 +23,8 @@ class Profile < ApplicationRecord
 
   # MODEL VALIDATIONS
   # limit max to 140 characters for tag_line
-  validates :tagline, presence: true, length: {maximum: 140}
-  # limit max to 500 characters for description
-  validates :description, presence: true, length: {maximum: 500}
+  validates :tagline, presence: true, length: { maximum: 140 }
+  validates :description, presence: true
   validates_inclusion_of :availability, in: [true, false]
 
   # Social media link validations
